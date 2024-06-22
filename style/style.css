@@ -1,0 +1,76 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../assets/background.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(10px); /* Aggiungi l'effetto di sfocatura */
+    z-index: -1; /* Assicurati che sia dietro gli altri contenuti */
+}
+
+#controlButton {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px 40px; /* Raddoppia le dimensioni del bottone */
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px; /* Bordo arrotondato */
+    font-size: 16px; /* Ingrandisci il testo del bottone */
+    z-index: 1; /* Assicurati che il bottone sia sopra */
+}
+
+#controlPanel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1; /* Assicurati che il pannello sia sopra */
+}
+
+#controlPanel h3 {
+    margin-top: 0;
+}
+
+#controlPanel label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#controlPanel input[type="range"],
+#controlPanel input[type="color"],
+#controlPanel input[type="checkbox"] {
+    width: 100%;
+    margin-top: 5px;
+}
+
+#controlPanel button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+}
