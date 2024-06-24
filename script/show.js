@@ -1,42 +1,39 @@
-// This function takes the projection matrix, the translation, and two rotation angles (in radians) as input arguments.
-// The two rotations are applied around x and y axes.
-// It returns the combined 4x4 transformation matrix as an array in column-major order.
-// The given projection matrix is also a 4x4 matrix stored as an array in column-major order.
-// You can use the MatrixMult function defined in project4.html to multiply two 4x4 matrices in the same format.
-function GetModelViewProjection( projectionMatrix, translationX, translationY, translationZ, rotationX, rotationY)
-{
-	// [TO-DO] Modify the code below to form the transformation matrix.
-	var trans = [
-		1, 0, 0, 0,
-		0, 1, 0, 0,
-		0, 0, 1, 0,
-		translationX, translationY, translationZ, 1
-	];
+function GetModelViewProjection(projectionMatrix, translationX, translationY, translationZ, rotationX, rotationY) {
+    // Matrice di traslazione per spostare il box a sinistra
+    var translationMatrix = [
+        1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        translationX, translationY, translationZ, 1
+    ];
 
-	const cosX = Math.cos(rotationX);
+    const cosX = Math.cos(rotationX);
     const sinX = Math.sin(rotationX);
     const cosY = Math.cos(rotationY);
     const sinY = Math.sin(rotationY);
 
+    let rotationMatrixX = [
+        1, 0, 0, 0,
+        0, cosX, sinX, 0,
+        0, -sinX, cosX, 0,
+        0, 0, 0, 1
+    ];
 
-	let rotationMatrixX = [
-		1, 0, 0, 0,
-		0, cosX, sinX, 0,
-		0, -sinX, cosX, 0,
-		0, 0, 0, 1
-	];
+    let rotationMatrixY = [
+        cosY, 0, -sinY, 0,
+        0, 1, 0, 0,
+        sinY, 0, cosY, 0,
+        0, 0, 0, 1
+    ];
 
-	let rotationMatrixY = [
-		cosY, 0, -sinY, 0,
-		0, 1, 0, 0,
-		sinY, 0, cosY, 0,
-		0, 0, 0, 1
-	];
-
-	let multiply_matrix = MatrixMult(MatrixMult(trans,rotationMatrixX), rotationMatrixY);
-	let final = MatrixMult(projectionMatrix, multiply_matrix); 
-
-	return final;
+    // Moltiplica prima le matrici di rotazione, poi la matrice di traslazione
+    let rotationMatrix = MatrixMult(rotationMatrixY, rotationMatrixX);
+    let modelViewMatrix = MatrixMult(translationMatrix, rotationMatrix);
+    
+    // Moltiplica la matrice di proiezione con la matrice model-view
+    let finalMatrix = MatrixMult(projectionMatrix, modelViewMatrix);
+    
+    return finalMatrix;
 }
 
 
@@ -64,7 +61,7 @@ var meshVS = `
 					 vec4 texColor = texture2D(tex, vTexCoord);
 					 gl_FragColor = texColor;
 				} else {
-					gl_FragColor = vec4(1,gl_FragCoord.z*gl_FragCoord.z,1,1);
+					gl_FragColor = vec4(0.5, 0, 0.2, 1);
 				}
 			}
         `;

@@ -1,43 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quantum Entaglement Visualization</title>
-    <link rel="stylesheet" href="../style/style.css"> 
+    <script type="text/javascript" id="includedscript" src="../script/show.js"></script>
+    <script type="text/javascript" src="../script/obj.js"></script>
+    <script type="text/javascript" src="../script/setup_env.js"></script>
+    <script type="text/javascript" src="../script/quantum_function.js"></script>
+    <link rel="stylesheet" href="../style/style.css">
 </head>
-<body>
-
-<div class="background-container"></div>
-
-<button id="controlButton">Open Control Panel</button>
-
-
-<div id="controlPanel">
-    <h3>Control Panel</h3>
-    <label for="animationSpeed">Animation Speed:</label>
-    <input type="range" id="animationSpeed" name="animationSpeed" min="0.1" max="5" step="0.1" value="1">
-    <label for="particleColor">Particle Color:</label>
-    <input type="color" id="particleColor" name="particleColor" value="#ff0000">
-    <label for="particleSize">Particle Size:</label>
-    <input type="range" id="particleSize" name="particleSize" min="1" max="10" step="1" value="5">
-    <label for="lightIntensity">Light Intensity:</label>
-    <input type="range" id="lightIntensity" name="lightIntensity" min="0" max="2" step="0.1" value="1">
-    <label for="toggleEffects">Toggle Effects:</label>
-    <input type="checkbox" id="toggleEffects" name="toggleEffects" checked>
-    <input type="file" id="objFileInput" name="objFileInput" onclick="LoadObj(this)" accept=".obj">
-    <button id="closePanelButton">Close</button>       
-</div>
-<!-- Script for panel control and environmental setting  -->
-
-<script src="../script/panel_control.js"></script>
-
-<!-- Script for rendering object and create WebGL environment -->
-
-<script src="../script/web_init.js"></script>
-<script src="../script/ui_control.js"></script>
-<script src="../script/obj_render.js"></script>
-<script src="../script/obj_insert.js"></script>
-
+<body onresize="WindowResize()">
+    <div id="canvas-div">
+        <canvas id="canvas"></canvas>
+    </div>
+    <button id="controlButton" onclick="toggleControlPanel()">Open Control Panel</button>
+    <div id="controlPanel">
+        <div id="controls">
+            <div class="control-group">
+                </div>
+                <div class="control">
+                    <input id="swap-yz" name="swap-yz" type="checkbox" onchange="SwapYZ(this)" />
+                    <label for="swap-yz"> Swap Y-Z Axes</label>
+                </div>
+                <div class="control">
+                    <input id="auto-rotate" name="auto-rotate" type="checkbox" onchange="AutoRotate(this)" />
+                    <label for="auto-rotate"> Auto Rotation</label>
+                </div>
+                <div class="control">
+                    <input id="rotation-speed" type="range" min="1" max="100" value="50" disabled />
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="control">
+                    OBJ model:<br/>
+                    <input id="obj" type="file" onchange="LoadObj(this)" accept=".obj" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="InformationButton" onclick="toggleQuantumPanel()">Quantum Information</button>
+    <div id="InformationPanel">
+        <div id="controls">
+            <div class="control-group">
+                <div class="control">
+                    <label for="qubit1">Qubit 1:</label>
+                    <select id="qubit1" name="qubit1" onchange="UpdateQubit1(this)">
+                        <option value="0">|0></option>
+                        <option value="1">|1></option>
+                        <option value="2">|+></option>
+                        <option value="3">|-></option>
+                    </select>
+                </div>
+                <div class="control">
+                    <label for="qubit2">Qubit 2:</label>
+                    <select id="qubit2" name="qubit2" onchange="UpdateQubit2(this)">
+                        <option value="0">|0></option>
+                        <option value="1">|1></option>
+                        <option value="2">|+></option>
+                        <option value="3">|-></option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="control">
+                    <label for="entanglement">Entanglement:</label>
+                    <select id="entanglement" name="entanglement" onchange="UpdateEntanglement(this)">
+                        <option value="0">|00> + |11></option>
+                        <option value="1">|00> - |11></option>
+                        <option value="2">|01> + |10></option>
+                        <option value="3">|01> - |10></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -1,4 +1,3 @@
-// Copyright 2020, Cem Yuksel, University of Utah
 
 class ObjMesh
 {
@@ -13,7 +12,7 @@ class ObjMesh
 	}
 	
 	// Reads the obj file at the given URL and parses it.
-	load( url )
+	load(url)
 	{
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
@@ -150,5 +149,4 @@ class ObjMesh
 		
 		return { positionBuffer: vBuffer, texCoordBuffer: tBuffer, normalBuffer: nBuffer };
 	}
-	
 }
