@@ -1,0 +1,76 @@
+.dg.main {
+    background: rgba(34, 34, 34, 0.9);
+    border-radius: 10px;
+    color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+    font-size: large;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.dg.main .title {
+    background: linear-gradient(135deg, #444, #222);
+    border-bottom: 1px solid #555;
+    border-radius: 10px 10px 0 0;
+    color: #a4a4a4;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+
+.dg.main .close-button {
+    color: #f0f0f0;
+}
+
+.dg .c {
+    color: #b30000;
+}
+
+.dg .cr {
+    background: #555;
+    border-radius: 5px;
+    margin: 5px 0;
+    padding: 5px;
+    transition: all 0.3s ease;
+}
+
+.dg .c select, .dg .c input[type="range"], .dg .c input[type="number"] {
+    background: #666;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    transition: all 0.3s ease;
+}
+
+.dg .c select:hover, .dg .c input[type="range"]:hover, .dg .c input[type="number"]:hover {
+    background: #777;
+}
+
+.dg .folder {
+    background: #0a0055;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.dg .folder .title {
+    background: linear-gradient(135deg, #b11515, #222);
+    border-radius: 5px;
+    color: #f0f0f0;
+    font-weight: bold;
+    font-size: large;
+    padding: 8px;
+    transition: all 0.3s ease;
+}
+
+.dg .folder .cr {
+    background: #0a0055;
+    border-radius: 5px;
+    font-size: medium;
+    transition: all 0.3s ease;
+}
+
+.dg .folder .cr:hover {
+    background: #e60606;
+}

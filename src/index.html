@@ -1,77 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Quantum Entaglement Visualization</title>
-    <script type="text/javascript" id="includedscript" src="../script/show.js"></script>
-    <script type="text/javascript" src="../script/obj.js"></script>
-    <script type="text/javascript" src="../script/setup_env.js"></script>
-    <script type="text/javascript" src="../script/quantum_function.js"></script>
-    <link rel="stylesheet" href="../style/style.css">
+    <title>Quantum Galaxy Vision</title>
+    <meta charset="UTF-8">
+    <!-- My personal styles -->
+
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <link rel="stylesheet" type="text/css" href="../style/gui.css">
+
+    <!-- Import utils libs  -->
+    <script type="text/javascript" src="../libs/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../libs/lodash.min.js"></script>
+    <script type="text/javascript" src="../libs/three.min.js"></script>
+    <script type="text/javascript" src="../libs/OrbitControls.js"></script>    
+    <script type="text/javascript" src='../libs/dat.gui.js'></script>  
+
+    <!-- My personal script  -->
+    <script src="../script/gravity_manager.js"></script>
+    <script src="../script/display.js"></script>
+    <script src="../script/particle.js"></script>
 </head>
-<body onresize="WindowResize()">
-    <div id="canvas-div">
-        <canvas id="canvas"></canvas>
-    </div>
-    <button id="controlButton" onclick="toggleControlPanel()">Open Control Panel</button>
-    <div id="controlPanel">
-        <div id="controls">
-            <div class="control-group">
-                </div>
-                <div class="control">
-                    <input id="swap-yz" name="swap-yz" type="checkbox" onchange="SwapYZ(this)" />
-                    <label for="swap-yz"> Swap Y-Z Axes</label>
-                </div>
-                <div class="control">
-                    <input id="auto-rotate" name="auto-rotate" type="checkbox" onchange="AutoRotate(this)" />
-                    <label for="auto-rotate"> Auto Rotation</label>
-                </div>
-                <div class="control">
-                    <input id="rotation-speed" type="range" min="1" max="100" value="50" disabled />
-                </div>
-            </div>
-            <div class="control-group">
-                <div class="control">
-                    OBJ model:<br/>
-                    <input id="obj" type="file" onchange="LoadObj(this)" accept=".obj" />
-                </div>
-            </div>
-        </div>
-    </div>
-    <button id="InformationButton" onclick="toggleQuantumPanel()">Quantum Information</button>
-    <div id="InformationPanel">
-        <div id="controls">
-            <div class="control-group">
-                <div class="control">
-                    <label for="qubit1">Qubit 1:</label>
-                    <select id="qubit1" name="qubit1" onchange="UpdateQubit1(this)">
-                        <option value="0">|0></option>
-                        <option value="1">|1></option>
-                        <option value="2">|+></option>
-                        <option value="3">|-></option>
-                    </select>
-                </div>
-                <div class="control">
-                    <label for="qubit2">Qubit 2:</label>
-                    <select id="qubit2" name="qubit2" onchange="UpdateQubit2(this)">
-                        <option value="0">|0></option>
-                        <option value="1">|1></option>
-                        <option value="2">|+></option>
-                        <option value="3">|-></option>
-                    </select>
-                </div>
-            </div>
-            <div class="control-group">
-                <div class="control">
-                    <label for="entanglement">Entanglement:</label>
-                    <select id="entanglement" name="entanglement" onchange="UpdateEntanglement(this)">
-                        <option value="0">|00> + |11></option>
-                        <option value="1">|00> - |11></option>
-                        <option value="2">|01> + |10></option>
-                        <option value="3">|01> - |10></option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>
+<body>
 </body>
 </html>
