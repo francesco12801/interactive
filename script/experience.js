@@ -8,7 +8,7 @@ filter.map((btn, i) =>{
         filter.map(item => item.classList.remove('active')); 
         btn.classList.add('active'); 
     })
-})
+});
 
 
 

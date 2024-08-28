@@ -16,6 +16,20 @@ let exp = [
         }
     },
     {
+        name: 'Lets Party',
+        about: 'CEO & Founder of Lets Party. Cross-platform based application that revolutionize the social network field providing services to nightclubs.',
+        tags: '#backend',
+        img: '../assets/letsParty.png',
+        lang:{
+            html: '20%',
+            css: '10%', 
+            javascript: '90%', 
+            typescript: '20%',  
+            database: '97%', 
+            nodejs: '80%',
+        }
+    },
+    {
         name: 'Eureka',
         about: 'CEO & Founder of Eureka. Groundbreaking social network for entrepreneurs, researchers,and artists who seek to share their innovative ideas. ',
         tags: '#backend',
