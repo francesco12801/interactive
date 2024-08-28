@@ -1,0 +1,494 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: black;
+    font-family: 'Montserrat', sans-serif; /* Utilizziamo il font Montserrat per tutto il documento */
+}
+
+
+
+header {
+    background-color: #040404; /* Nuovo colore di sfondo per la navbar */
+    color: #ecf0f1; /* Nuovo colore del testo */
+    padding: 10px 20px; /* Padding per spaziatura interna */
+    z-index: 1; 
+    margin-top: 0;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+}
+
+#logo {
+    width: 225px; /* Dimensione del logo */
+    height: auto; /* Mantiene le proporzioni */
+    cursor: pointer;
+}
+
+#navbar {
+    margin-left: auto; /* Spingi la navbar verso destra */
+}
+
+#navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+#navbar ul li {
+    margin-right: 20px; /* Spaziatura tra voci di navigazione */
+}
+
+#navbar ul li a {
+    text-decoration: none;
+    color: #ecf0f1;
+    font-weight: 700;
+    font-size: 25px; /* Aumenta la dimensione del testo */
+    padding: 12px 23px; /* Padding per spaziatura interna dei link */
+    border-radius: 6px; /* Bordi arrotondati */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transizioni per colore di sfondo e testo */
+}
+
+#navbar ul li a:hover {
+    background-color: #4c0202; 
+    color: #fff; 
+}
+
+#background-container {
+    position: fixed; /* Mantiene il background fisso sullo sfondo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Questo posiziona il background dietro tutto */
+    pointer-events: none; /* Questo evita che il background interferisca con i click */
+}
+
+canvas {
+    color: transparent;
+    display: block; 
+    width: 100%;
+    height: 80%;
+}
+
+/* Stili aggiornati per il loader */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000; /* Sfondo nero */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; 
+    opacity: 1; 
+    transition: opacity 0.5s ease-out; 
+}
+
+#loader.hidden {
+    opacity: 0; /* Opacità a 0 per nascondere il loader */
+    pointer-events: none; /* Impedisci interazioni con il loader nascosto */
+}
+
+#loader p {
+    font-family: 'Montserrat', sans-serif; /* Font Montserrat */
+    font-size: 32px; /* Dimensione del testo */
+    font-weight: 700; /* Peso del testo */
+    color: #fff; /* Testo bianco */
+    text-align: center;
+    margin: 0 20px; /* Margine per evitare che il testo tocchi i bordi */
+}
+
+
+#land-section{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+    z-index: 1; 
+}
+
+#land-section canvas{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.land-content{
+    position: relative;
+    z-index: 1;
+}
+
+.land-img {
+    width: 150px; 
+    height: 150px; 
+    border: 5px solid #fff; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    display: block;        /* Rende l'immagine un blocco */
+    margin: 0 auto;
+}
+
+.land-headline{
+    font-family: 'Montserrat', sans-serif; /* Font Montserrat */
+    font-size: 4.5rem;
+    text-align: center;
+}
+.land-secondline{
+    font-family: 'Montserrat', sans-serif; /* Font Montserrat */
+    margin: 25px 0 50px;
+    font-size: 1.6rem;
+    text-align: center;
+}
+.btn{
+    padding: 15px 30px; 
+    background-color: black;
+    color: #fff;
+    width: fit-content;
+    text-transform: capitalize;
+    display: block;
+    border: 2px solid #fff; /* Bordo bianco di 2px di spessore */
+    border-radius: 5px;
+    margin: auto;
+}
+
+section{
+    padding: 60px 10vw; 
+    z-index: 1; 
+}
+
+.exp-title{
+    text-align: center;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif; /* Font Montserrat */
+    font-size: 2.4rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.exp-title::before{
+    content: attr(data-text);
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    font-size: 4.5rem;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+.exp-info{
+    text-align: center;
+    color: #ffffff;
+    width: 50%; 
+    min-width: 300px;
+    opacity: 0.8;
+    margin: 3.5rem auto;
+    font-family: 'Montserrat', sans-serif; /* Font Montserrat */
+    font-size: 1.1rem;
+    line-height: 1.8rem;
+}
+
+.filter{
+    margin: 100px 0 50px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.filter-btn{
+    padding: 15px 30px; 
+    background: transparent;
+    text-transform: capitalize;
+    color: #fff;
+    border: 2px solid #fff; 
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5;
+}
+
+.filter-btn.active, .filter-btn:hover{
+    color: #000;
+    background: #fff;
+}
+
+
+.exp-gallery{
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    gap: 20px;
+    position: relative;
+}
+
+.exp-card{
+    position: relative;
+    height: 200px;
+}
+
+.exp-img{
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    border-radius: 5px;
+    transition: 0.5s;
+}
+
+.tags{
+    position: absolute;
+    left: 10px; 
+    bottom: 10px;
+    color: #fff;
+    width: 90%;
+    transition: 0.5s;
+    opacity: 0;
+}
+
+.exp-card:hover .tags{
+    opacity: 1;
+}
+
+.exp-card:hover .exp-img{
+    opacity: 0.6;
+}
+
+#exp-info{
+    margin-top: 100px;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+
+}
+
+.exp-detail{
+    overflow: hidden;
+
+}
+
+.image{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.name{
+    color: #fff;
+    margin: 30px 0;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    text-transform: capitalize;
+}
+
+.details{
+    color: #fff; 
+    opacity: 0.6;
+    font-size: 1.1rem;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.8rem;
+    margin-bottom: 40px;
+}
+
+.cl-card{
+    margin-bottom: 10px;
+}
+
+.language{
+    display: flex;
+    gap: 10px;
+}
+
+.icon{
+    width: 20px;
+    height: 20px;
+}
+
+.language .name{
+    font-size: 1rem;
+    margin: 0; 
+    font-family: 'Montserrat', sans-serif;
+}
+
+.progress-tracking{
+    width: 100%;
+    margin: 20px 0 30px;
+    height: 5px;
+    border-radius: 10px;
+    background: #1a1a1a;
+    overflow: hidden;
+}
+
+.progress{
+    transition: 1s;
+    width: 50%;
+    background: #fff;
+    height: 100%;
+    border-radius: 10px;
+}
+
+
+.about-me-container{
+    margin-top: 100px;
+    display: flex;
+    gap: 100px;
+}
+
+.download-btn{
+    position: relative;
+    /* bottom: 30px; */
+    margin-bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.row-container{
+    display: flex;
+    justify-content: space-between; /* Spazio tra i container */
+    gap: 100px; /* Spaziatura tra i container */
+}
+
+.personal-info{
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    flex: 1;
+    z-index: 2;
+}
+
+.title{
+    text-align: center;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: capitalize;
+    font-size: 2.2rem;
+    font-weight: 300;
+    margin-bottom: 40px;
+
+}
+
+.personal-info .title{
+    text-align: left;
+}
+
+.personal-info p{
+    text-align: left;
+    margin: 30px 0; 
+    font-size: 1.1rem;
+}
+
+.personal-info p span{
+    opacity: 0.5; 
+}
+
+.heart-container{
+    background-color: black;
+    margin: 0 auto;
+    left: 30%;
+    width: 700px;
+    height: 500px;
+}
+.skils{
+    padding-top: 50px;
+    display: flex;
+}
+.skils-container{
+    background-color: black;
+    padding-top: 100px;
+    margin: 0 auto;
+    width: 1000px;
+    height: 500px;
+}
+
+.contact-section .info-contact{
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    text-align: center;
+}
+
+
+.contact-container{
+    margin-top: 100px;
+    gap: 50px;
+    display: flex;
+}
+
+.contact-details{
+    width: 25%;
+    color: #fff;
+}
+
+.contact-card{
+    position: relative;
+    padding-top: 10px;
+    padding-left: 60px;
+    margin-bottom: 40px;
+}
+
+.card-title{
+    text-transform: capitalize;
+    opacity: 0.8;
+}
+
+.contact-form{
+    width: 75%;
+}
+
+input, textarea{
+    width: 100%;
+    padding: 20px;
+    background: #1a1a1a;
+    color: #fff;
+    outline: none;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+.name-email-input{
+    display: flex;
+    gap: 20px;
+}
+
+textarea{
+    font-family: 'Montserrat', sans-serif;
+    resize: none;
+    height: 300px;
+}
+
+.contact-form .btn{
+    margin: 0;
+    margin-left: 40%;
+    position: relative;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.credit{
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+    color: hsl(0, 0%, 100%);
+    text-transform: capitalize;
+    background: transparent;
+}
+
+.social-container{
+    background-color: black;
+    padding-top: 100px;
+    margin: 0 auto;
+    width: 1000px;
+    height: 300px;
+}

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Francesco Tinessa Website</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="loader">
+        <p>The Artist is the glitch in the Matrix</p>
+    </div>
+    <header>
+        <div class="header-container">
+            <img src="../assets/logo.png" alt="Logo" id="logo">
+            <nav id="navbar">
+                <ul>
+                    <li><a href="#land-section">About</a></li>
+                    <li><a href="#exp-section">Experience</a></li>
+                    <li><a href="#about-section">Personal Information</a></li>
+                    <li><a href="#contact-section">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main id="land-section" >
+        <div class="land-content">
+            <img src="../assets/bsc.jpeg" alt="Profile" class="land-img">
+            <h1 class="land-headline">Francesco Tinessa</h1>
+            <p class="land-secondline">Software Engineer</p>
+            <a href="#" class="btn">Write me</a>
+        </div>
+    </main>
+
+    <!-- Experiences section -->
+    <section id="exp-section" >
+        <h1 class="exp-title" data-text="Job">Experience in Software field</h1>
+        <p class="exp-info">Professional experiences perfomed during Bachelor and Master 🏋🏼‍♀️</p>
+        <div class="filter">
+            <button class="filter-btn active" data-filter-value="all">All</button>
+            <button class="filter-btn" data-filter-value="frontend">Fronted</button>
+            <button class="filter-btn" data-filter-value="backend">Backend</button>
+        </div>
+        <div class="exp-gallery">
+        </div>
+        <div id="exp-info">
+            <div class="exp-detail">
+                <img src="../assets/dl.png" class="image" alt="">
+                <h2 class="name"></h2>
+                <p class="details"></p>                
+            </div>
+            <div class="coding-lang">
+                <div class="cl-card">
+                    <div class="language">
+                        <img src="../assets/html.png" class="icon">
+                        <p class="name">HTML</p>
+                    </div>
+                    <div class="progress-tracking" data-name="html">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+                <div class="cl-card">
+                    <div class="language">
+                        <img src="../assets/css.png" class="icon">
+                        <p class="name">CSS</p>
+                    </div>
+                    <div class="progress-tracking" data-name="css">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+                <div class="cl-card">
+                    <div class="language">
+                        <img src="../assets/javascript.png" class="icon">
+                        <p class="name">JAVASCRIPT</p>
+                    </div>
+                    <div class="progress-tracking" data-name="javascript">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+                <div class="cl-card">
+                    <div class="language">
+                        <img src="../assets/database.png" class="icon">
+                        <p class="name">DATABASE</p>
+                    </div>
+                    <div class="progress-tracking" data-name="database">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+                <div class="cl-card">
+                    <div class="language">
+                        <img src="../assets/nodejs.png" class="icon">
+                        <p class="name">NODEJS</p>
+                    </div>
+                    <div class="progress-tracking" data-name="nodejs">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+                <div class="cl-card">
+                    <div class="language">
+                        <img src="../assets/typescript.png" class="icon">
+                        <p class="name">TYPESCRIPT</p>
+                    </div>
+                    <div class="progress-tracking" data-name="typescript">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About section -->
+    <section id="about-section" >
+        <h1 class="section-title" data-text="resume">about</h1>
+        <p class="section-info"> My skills, project and educations</p>
+        <div class="about-content">
+            <a href="../assets/CV_update.pdf" class="btn light download-btn" download>Download CV</a>
+        </div>
+        <div class="row-container">
+            
+                
+            <div class="personal-info">
+                <h2 class="title">Personal Information</h2>
+                <p><span>Name: </span>Francesco Tinessa</p>
+                <p><span>Age: </span> 23 years</p>
+                <p><span>Nationality: </span>Italian🇮🇹</p>
+                <p><span>Email: </span> francescotinessa2001@gmail.com</p>
+                <p><span>Freelance: </span> Available</p>
+                <p><span>Instagram: </span> @francescotinessa_</p>
+
+            </div>
+            <div class="heart">
+                <div id="heart-container" class="heart-container">
+                </div>
+            </div>
+        </div>
+        <div class="skils">
+            <h2 class="title">Skills</h2>
+            <div id="skils-container" class="skils-container"></div>
+        </div>
+
+    </section>
+
+    <section class="contact-section" id="contact-section">
+        <h1 class="title" data-text="contact">Let's meet!</h1>
+        <h2 class="info-contact">Show me your idea and make the history together. Hang in there.🤩</h2>
+
+        <div class="contact-container">
+            <div class="contact-details">
+                <div class="contact-card">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span class="card-title">Address</span>
+                    <p class="card-info">Via Della Lega Lombarda 00162, Roma, Italy</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span class="card-title">Mail Me</span>
+                    <p class="card-info">francescotinessa2001@gmail.com</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fa-solid fa-phone"></i>
+                    <span class="card-title">Phone No.</span>
+                    <p class="card-info">+39 3495682698</p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form action="">
+                    <div class="name-email-input">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <input type="text" placeholder="Subject" required>
+                    <textarea placeholder="Message"></textarea>
+                    <button class="btn light" type="submit">Send Message</button>
+                </form>                
+            </div>            
+        </div>
+        <div id="social-container" class="social-container">
+        </div>
+
+    </section>
+    <p class="credit">Designed By<b> Francesco Tinessa</b></p>
+    
+    <!-- Three JS script  -->
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@latest/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/"
+          }
+        }
+      </script>
+    <script src="../script/loader.js"></script>
+    <script type="module" src="../script/three/background-manager.js"></script>
+    <script type="module" src="../script/three/skill-manager.js"></script>
+    <script type="module" src="../script/three/heart-manager.js"></script>
+    <script type="module" src="../script/three/social-manager.js"></script>
+    <script src="../script/app.js"></script>
+    <script src="../script/experience.js"></script>
+    <!-- <script type="module" src="../script/setup.js"></script> -->
+</body>
+</html>

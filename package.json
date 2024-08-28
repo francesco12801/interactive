@@ -1,0 +1,17 @@
+{
+  "name": "francesco_tinessa_website",
+  "version": "1.0.0",
+  "description": "personal website made with ThreeJs",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Francesco Tinessa",
+  "license": "MIT",
+  "dependencies": {
+    "three": "^0.167.1"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}
