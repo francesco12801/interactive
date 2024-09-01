@@ -364,10 +364,12 @@ section{
 }
 
 
+
 .about-me-container{
     margin-top: 100px;
     display: flex;
     gap: 100px;
+    z-index: 1;
 }
 
 .download-btn{
@@ -389,7 +391,7 @@ section{
     color: #fff;
     font-family: 'Montserrat', sans-serif;
     flex: 1;
-    z-index: 2;
+    z-index: 1;
 }
 
 .title{
@@ -423,6 +425,7 @@ section{
     left: 30%;
     width: 700px;
     height: 500px;
+    z-index: 1;
 }
 .skils{
     padding-top: 50px;
@@ -434,12 +437,28 @@ section{
     margin: 0 auto;
     width: 1000px;
     height: 500px;
+    z-index: 1;
 }
 
 .contact-section .info-contact{
     font-family: 'Montserrat', sans-serif;
     color: #fff;
     text-align: center;
+}
+
+
+#contact-section canvas{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.contact-content{
+    position: relative;
+    top: -25%; 
+    z-index: 1;
+    color: #fff;
 }
 
 
@@ -510,6 +529,7 @@ textarea{
 }
 
 .social-container{
+    position: relative;
     background-color: black;
     padding-top: 100px;
     margin: 0 auto;
