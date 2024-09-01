@@ -1,106 +1,147 @@
-// import * as THREE from 'three';
-// import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-// import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { THREE, GLTFLoader, OrbitControls } from './import-three.js';
 
-// const scene = new THREE.Scene();
-// const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-// const renderer = new THREE.WebGLRenderer();
-// renderer.setSize(window.innerWidth, window.innerHeight);
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('exp-section');
 
-
-// // Landing Manager 
-// const landingManager = document.querySelector('#land-section'); 
-// landingManager.appendChild(renderer.domElement); 
-
-// // 3D model 
-// let model; 
-// const loader = new GLTFLoader();
-
-// loader.load( '../assets/scene.gltf', function ( gltf ) {
-//     model = gltf.scene; 
-// 	scene.add( gltf.scene );
-
-// }, undefined, function ( error ) {
-
-// 	console.error( error );
-
-// } );
-
-// // Orbit Controls
-// const controls = new OrbitControls(camera, renderer.domElement);
-// controls.enableZoom = false; 
-// // lights 
-// const ambientLight = new THREE.AmbientLight(0xffffff); 
-// const light = new THREE.AmbientLight(0x404040); 
-// scene.add(ambientLight, light); 
-
-// // Camera 
-// camera.position.z = 5;
-// camera.position.y = 1;
-// camera.position.x = 4;
-// controls.update();
-
-// // Animate 
-
-// function animate(){
-//     requestAnimationFrame(animate);
-//     controls.update();
-//     renderer.render(scene,camera); 
-// }
-
-// animate(); 
-
-import { THREE, OrbitControls, OBJLoader} from './import-three.js';
-
-// Funzione per inizializzare il background scorrevole
-function initScrollingBackground(containerId) {
-    const container = document.getElementById(containerId);
-
+    // Imposta la scena, la camera e il renderer
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.domElement.style.position = 'fixed'; 
-    renderer.domElement.style.top = '0';
-    renderer.domElement.style.left = '0';
-    renderer.domElement.style.zIndex = '-1';
     container.appendChild(renderer.domElement);
 
-    // Carica la texture per il background
-    const textureLoader = new THREE.TextureLoader();
-    const backgroundTexture = textureLoader.load('../assets/textures/color_emissive.png');
-    backgroundTexture.wrapS = THREE.RepeatWrapping;
-    backgroundTexture.wrapT = THREE.RepeatWrapping;
-    backgroundTexture.repeat.set(4, 4); // Puoi regolare i valori per adattare la texture
+    // Aggiungi i controlli di orbita
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.25;
+    controls.enableZoom = true;
 
-    // Crea un piano con la texture
-    const geometry = new THREE.PlaneGeometry(100, 100); // Dimensione del piano
-    const material = new THREE.MeshBasicMaterial({ map: backgroundTexture });
-    const plane = new THREE.Mesh(geometry, material);
-    plane.position.z = -50; // Posiziona il piano più lontano dalla camera
-    scene.add(plane);
+    // Aggiungi la luce ambientale e la luce direzionale
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    directionalLight.position.set(1, 1, 1).normalize();
+    scene.add(ambientLight);
+    scene.add(directionalLight);
 
-    camera.position.z = 5;
+    // Funzione per generare le stelle
+    let stars, starGeometry, starMaterial;
+    function createStarField() {
+        starGeometry = new THREE.BufferGeometry();
+        starMaterial = new THREE.PointsMaterial({
+            color: 0xffffff,
+            size: 1.0,
+            sizeAttenuation: true,
+            map: new THREE.TextureLoader().load('../assets/textures/star.jpg'), 
+            transparent: true,
+        });
 
+        const starsCount = 100000;
+        const positions = new Float32Array(starsCount * 3);
+        const initialY = 1000; // Altezza iniziale delle stelle
+
+        for (let i = 0; i < starsCount; i++) {
+            const x = Math.random() * 2000 - 1000;
+            const y = initialY; // Tutte le stelle partono dalla stessa altezza
+            const z = Math.random() * 2000 - 1000;
+
+            positions[i * 3] = x;
+            positions[i * 3 + 1] = y;
+            positions[i * 3 + 2] = z;
+        }
+
+        starGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        stars = new THREE.Points(starGeometry, starMaterial);
+        scene.add(stars);
+    }
+    
+    createStarField();
+
+    // Carica il modello GLTF
+    function loadGLTFModel(url) {
+        const loader = new GLTFLoader();
+        const textureLoader = new THREE.TextureLoader();
+        const texture = textureLoader.load('../assets/textures/rock.jpg');
+
+        loader.load(url, (gltf) => {
+            const model = gltf.scene;
+
+            // Applica la texture ai materiali del modello
+            model.traverse((node) => {
+                if (node.isMesh) {
+                    node.material.map = texture;
+                    node.material.needsUpdate = true;
+                }
+            });
+
+            // Aggiungi il modello alla scena
+            scene.add(model);
+            
+            // Posizionare e scalare il modello
+            model.position.set(0, 0, 0);
+            model.scale.set(10, 10, 10);
+        }, undefined, (error) => {
+            console.error('Errore nel caricamento del modello GLTF:', error);
+        });
+    }
+
+    // Aggiungi l'URL del tuo modello GLTF qui
+    loadGLTFModel('../assets/stonehenge.gltf');
+
+    // Posizionare la camera
+    camera.position.z = 700;
+    camera.position.y = 400;
+
+    // Variabili per controllare l'animazione ondulatoria
+    let time = 0;
+    const waveAmplitude = 10; // Altezza delle onde
+    const waveFrequency = 0.02; // Frequenza delle onde (più bassa per onde più larghe e fluide)
+    const waveSpeed = 0.02; // Velocità del movimento ondulatorio
+
+    // Funzione di animazione
     function animate() {
         requestAnimationFrame(animate);
+        
+        // Aggiorna la posizione delle stelle per simulare la caduta e l'ondulazione
+        const positions = starGeometry.attributes.position.array;
+        const speed = 1; // Velocità di caduta
+        const stopY = 0; // Altezza a cui fermarsi
 
-        // Scorrimento della texture
-        backgroundTexture.offset.y -= 0.01; // Velocità di scorrimento verticale
-        backgroundTexture.offset.x -= 0.005; // Velocità di scorrimento orizzontale (opzionale)
+        for (let i = 0; i < positions.length; i += 3) {
+            // Simula la caduta delle stelle
+            if (positions[i + 1] > stopY) {
+                positions[i + 1] -= speed;
+                if (positions[i + 1] < stopY) {
+                    positions[i + 1] = stopY;
+                }
+            } else {
+                // Applica l'onda sinusoidale dopo che le stelle si sono fermate
+                positions[i + 1] = stopY + Math.sin(time + positions[i] * waveFrequency + positions[i + 2] * waveFrequency) * waveAmplitude;
+            }
+        }
+
+        starGeometry.attributes.position.needsUpdate = true;
+
+        // Incrementa il tempo per l'effetto ondulatorio
+        time += waveSpeed;
+
+        // Rotazione della scena per dare l'effetto di movimento
+        scene.rotation.y += 0.0005;
+
+        // Controlli di orbita
+        controls.update();
 
         renderer.render(scene, camera);
     }
 
     animate();
 
-    // Aggiornamento del renderer e della camera quando la finestra cambia dimensione
+    // Aggiorna il renderer e la camera se la finestra viene ridimensionata
     window.addEventListener('resize', () => {
-        camera.aspect = container.clientWidth / container.clientHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(container.clientWidth, container.clientHeight);
-    });
-}
+        const width = container.clientWidth;
+        const height = container.clientHeight;
 
-// Inizializza il background scorrevole
-initScrollingBackground('background-container'); // Assicurati di avere un div con id="background-container"
+        renderer.setSize(width, height);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+    });
+});

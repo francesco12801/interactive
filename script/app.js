@@ -1,20 +1,5 @@
 
 let exp = [ 
-    
-    {
-        name: 'Deloitte',
-        about: 'Building up cloud infrastructure and mananger for third-party society. No more information for privacy agreements.',
-        tags: '#backend',
-        img: '../assets/dl.png',
-        lang:{
-            html: '10%',
-            css: '10%', 
-            javascript: '50%', 
-            typescript: '80%',  
-            database: '60%', 
-            nodejs: '40%',
-        }
-    },
     {
         name: 'Lets Party',
         about: 'CEO & Founder of Lets Party. Cross-platform based application that revolutionize the social network field providing services to nightclubs.',
@@ -27,6 +12,20 @@ let exp = [
             typescript: '20%',  
             database: '97%', 
             nodejs: '80%',
+        }
+    },
+    {
+        name: 'Deloitte',
+        about: 'Building up cloud infrastructure and mananger for third-party society. No more information for privacy agreements.',
+        tags: '#backend',
+        img: '../assets/dl.png',
+        lang:{
+            html: '10%',
+            css: '10%', 
+            javascript: '50%', 
+            typescript: '80%',  
+            database: '60%', 
+            nodejs: '40%',
         }
     },
     {

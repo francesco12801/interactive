@@ -24,6 +24,7 @@
             </nav>
         </div>
     </header>
+    
     <main id="land-section" >
         <div class="land-content">
             <img src="../assets/bsc.jpeg" alt="Profile" class="land-img">
@@ -34,75 +35,77 @@
     </main>
 
     <!-- Experiences section -->
-    <section id="exp-section" >
-        <h1 class="exp-title" data-text="Job">Experience in Software field</h1>
-        <p class="exp-info">Professional experiences perfomed during Bachelor and Master 🏋🏼‍♀️</p>
-        <div class="filter">
-            <button class="filter-btn active" data-filter-value="all">All</button>
-            <button class="filter-btn" data-filter-value="frontend">Fronted</button>
-            <button class="filter-btn" data-filter-value="backend">Backend</button>
-        </div>
-        <div class="exp-gallery">
-        </div>
-        <div id="exp-info">
-            <div class="exp-detail">
-                <img src="../assets/dl.png" class="image" alt="">
-                <h2 class="name"></h2>
-                <p class="details"></p>                
+    <section id="exp-section">
+        <div class="exp-content">
+            <h1 class="exp-title" data-text="Job">Experience in Software field</h1>
+            <p class="exp-info">Professional experiences perfomed during Bachelor and Master 🏋🏼‍♀️</p>
+            <div class="filter">
+                <button class="filter-btn active" data-filter-value="all">All</button>
+                <button class="filter-btn" data-filter-value="frontend">Fronted</button>
+                <button class="filter-btn" data-filter-value="backend">Backend</button>
             </div>
-            <div class="coding-lang">
-                <div class="cl-card">
-                    <div class="language">
-                        <img src="../assets/html.png" class="icon">
-                        <p class="name">HTML</p>
-                    </div>
-                    <div class="progress-tracking" data-name="html">
-                        <div class="progress"></div>
-                    </div>
+            <div class="exp-gallery">
+            </div>
+            <div id="exp-info">
+                <div class="exp-detail">
+                    <img src="../assets/dl.png" class="image" alt="">
+                    <h2 class="name"></h2>
+                    <p class="details"></p>                
                 </div>
-                <div class="cl-card">
-                    <div class="language">
-                        <img src="../assets/css.png" class="icon">
-                        <p class="name">CSS</p>
+                <div class="coding-lang">
+                    <div class="cl-card">
+                        <div class="language">
+                            <img src="../assets/html.png" class="icon">
+                            <p class="name">HTML</p>
+                        </div>
+                        <div class="progress-tracking" data-name="html">
+                            <div class="progress"></div>
+                        </div>
                     </div>
-                    <div class="progress-tracking" data-name="css">
-                        <div class="progress"></div>
+                    <div class="cl-card">
+                        <div class="language">
+                            <img src="../assets/css.png" class="icon">
+                            <p class="name">CSS</p>
+                        </div>
+                        <div class="progress-tracking" data-name="css">
+                            <div class="progress"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="cl-card">
-                    <div class="language">
-                        <img src="../assets/javascript.png" class="icon">
-                        <p class="name">JAVASCRIPT</p>
+                    <div class="cl-card">
+                        <div class="language">
+                            <img src="../assets/javascript.png" class="icon">
+                            <p class="name">JAVASCRIPT</p>
+                        </div>
+                        <div class="progress-tracking" data-name="javascript">
+                            <div class="progress"></div>
+                        </div>
                     </div>
-                    <div class="progress-tracking" data-name="javascript">
-                        <div class="progress"></div>
+                    <div class="cl-card">
+                        <div class="language">
+                            <img src="../assets/database.png" class="icon">
+                            <p class="name">DATABASE</p>
+                        </div>
+                        <div class="progress-tracking" data-name="database">
+                            <div class="progress"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="cl-card">
-                    <div class="language">
-                        <img src="../assets/database.png" class="icon">
-                        <p class="name">DATABASE</p>
+                    <div class="cl-card">
+                        <div class="language">
+                            <img src="../assets/nodejs.png" class="icon">
+                            <p class="name">NODEJS</p>
+                        </div>
+                        <div class="progress-tracking" data-name="nodejs">
+                            <div class="progress"></div>
+                        </div>
                     </div>
-                    <div class="progress-tracking" data-name="database">
-                        <div class="progress"></div>
-                    </div>
-                </div>
-                <div class="cl-card">
-                    <div class="language">
-                        <img src="../assets/nodejs.png" class="icon">
-                        <p class="name">NODEJS</p>
-                    </div>
-                    <div class="progress-tracking" data-name="nodejs">
-                        <div class="progress"></div>
-                    </div>
-                </div>
-                <div class="cl-card">
-                    <div class="language">
-                        <img src="../assets/typescript.png" class="icon">
-                        <p class="name">TYPESCRIPT</p>
-                    </div>
-                    <div class="progress-tracking" data-name="typescript">
-                        <div class="progress"></div>
+                    <div class="cl-card">
+                        <div class="language">
+                            <img src="../assets/typescript.png" class="icon">
+                            <p class="name">TYPESCRIPT</p>
+                        </div>
+                        <div class="progress-tracking" data-name="typescript">
+                            <div class="progress"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -110,7 +113,7 @@
     </section>
     <!-- About section -->
     <section id="about-section" >
-        <h1 class="section-title" data-text="resume">about</h1>
+        <h1 class="section-title" data-text="resume">About</h1>
         <p class="section-info"> My skills, project and educations</p>
         <div class="about-content">
             <a href="../assets/CV_update.pdf" class="btn light download-btn" download>Download CV</a>
@@ -192,6 +195,7 @@
       </script>
     <script src="../script/loader.js"></script>
     <script type="module" src="../script/three/setup.js"></script>
+    <script type="module" src="../script/three/background-manager.js"></script>
     <script type="module" src="../script/three/skill-manager.js"></script>
     <script type="module" src="../script/three/heart-manager.js"></script>
     <!-- <script type="module" src="../script/three/social-manager.js"></script> -->
