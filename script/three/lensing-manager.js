@@ -1,5 +1,4 @@
 
-// main.js (o qualsiasi altro file)
 import { THREE, OrbitControls, OBJLoader} from './import-three.js';
 
 
@@ -78,22 +77,21 @@ function initThreeJS(containerId) {
     let isCondensing = false;
     const centerPosition = new THREE.Vector3(0, 0, 0);
 
-    // Carica la texture
+    // texture
     const textureLoader = new THREE.TextureLoader();
     const texture = textureLoader.load('../assets/textures/particle_texture.jpg');
 
-    // Carica il modello .obj
+   
     const objLoader = new OBJLoader();
     let models = [];
 
     objLoader.load(
-        '../assets/atom.obj', // Sostituisci con il percorso del tuo file .obj
+        '../assets/atom.obj',
         function (object) {
-            // Clona il modello e aggiungi quattro istanze
+            
             for (let i = 0; i < 4; i++) {
                 const model = object.clone();
-                
-                // Applica la texture a tutti i materiali del modello
+                // Texture apply 
                 model.traverse(function (child) {
                     if (child.isMesh) {
                         child.material.map = texture;
@@ -101,12 +99,12 @@ function initThreeJS(containerId) {
                     }
                 });
 
-                // Posiziona i modelli
-                const angle = (i / 4) * Math.PI * 2; // Distribuzione circolare
+                // Model Position
+                const angle = (i / 4) * Math.PI * 2; // Make em in the center 
                 const radius = 1.5; // Distanza dal centro
                 model.position.set(Math.cos(angle) * radius, Math.sin(angle) * radius, 0);
 
-                model.visible = false; // Nascondi inizialmente i modelli
+                model.visible = false; 
                 scene.add(model);
                 models.push(model);
             }
@@ -164,8 +162,8 @@ function initThreeJS(containerId) {
         if (isCondensing) {
             condenseParticles();
 
-            // Calcola la nuova posizione della telecamera basata sul progresso della condensazione
-            const progress = Math.min(1, aggregationParticle / 88750000); // Normalizza il progresso tra 0 e 1
+            // Calculate new position of camera 
+            const progress = Math.min(1, aggregationParticle / 88750000); // Normalization 
             camera.position.x = cameraStartPosition.x - (cameraStartPosition.x - cameraEndPosition.x) * progress;
             camera.position.y = cameraStartPosition.y - (cameraStartPosition.y - cameraEndPosition.y) * progress;
             camera.position.z = cameraStartPosition.z - (cameraStartPosition.z - cameraEndPosition.z) * progress;
@@ -187,17 +185,17 @@ function initThreeJS(containerId) {
             }
         }
 
-        // Ruota la telecamera attorno all'asse X
+        // Rotazione telecamera attorno all'asse X
         cameraAngle += 0.01;
         camera.position.y = Math.sin(cameraAngle) * 2;
         camera.position.z = Math.cos(cameraAngle) * 2;
         camera.lookAt(centerPosition);
 
-        // Ruota anche la luce direzionale
+        // Rotazione la luce direzionale
         directionalLight.position.y = Math.sin(cameraAngle) * 2;
         directionalLight.position.z = Math.cos(cameraAngle) * 2;
 
-        // Ruota gli oggetti se sono visibili
+        // Rotazione degli oggetti (if visible)
         models.forEach(model => {
             if (model.visible) {
                 model.rotation.y += 0.01; 

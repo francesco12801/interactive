@@ -530,7 +530,7 @@ textarea{
 
 .social-container{
     position: relative;
-    background-color: black;
+    background-color: transparent;
     padding-top: 100px;
     margin: 0 auto;
     width: 1000px;

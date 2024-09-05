@@ -3,7 +3,7 @@ import { THREE, GLTFLoader, OrbitControls } from './import-three.js';
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('exp-section');
 
-    // Imposta la scena, la camera e il renderer
+    // scena, la camera e il renderer
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     controls.dampingFactor = 0.25;
     controls.enableZoom = true;
 
-    // Aggiungi la luce ambientale e la luce direzionale
+    //luce ambientale e la luce direzionale
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
     directionalLight.position.set(1, 1, 1).normalize();
@@ -65,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
         loader.load(url, (gltf) => {
             const model = gltf.scene;
 
-            // Applica la texture ai materiali del modello
             model.traverse((node) => {
                 if (node.isMesh) {
                     node.material.map = texture;
@@ -84,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Aggiungi l'URL del tuo modello GLTF qui
+    
     loadGLTFModel('../assets/stonehenge.gltf');
 
     // Posizionare la camera
@@ -97,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const waveFrequency = 0.02; // Frequenza delle onde (più bassa per onde più larghe e fluide)
     const waveSpeed = 0.02; // Velocità del movimento ondulatorio
 
-    // Funzione di animazione
+
     function animate() {
         requestAnimationFrame(animate);
         
@@ -107,14 +106,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const stopY = 0; // Altezza a cui fermarsi
 
         for (let i = 0; i < positions.length; i += 3) {
-            // Simula la caduta delle stelle
+            // Caduta delle stelle
             if (positions[i + 1] > stopY) {
                 positions[i + 1] -= speed;
                 if (positions[i + 1] < stopY) {
                     positions[i + 1] = stopY;
                 }
             } else {
-                // Applica l'onda sinusoidale dopo che le stelle si sono fermate
+                // Sin wave dopo che le stelle si sono fermate
                 positions[i + 1] = stopY + Math.sin(time + positions[i] * waveFrequency + positions[i + 2] * waveFrequency) * waveAmplitude;
             }
         }
@@ -124,7 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Incrementa il tempo per l'effetto ondulatorio
         time += waveSpeed;
 
-        // Rotazione della scena per dare l'effetto di movimento
         scene.rotation.y += 0.0005;
 
         // Controlli di orbita
@@ -135,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animate();
 
-    // Aggiorna il renderer e la camera se la finestra viene ridimensionata
+    
     window.addEventListener('resize', () => {
         const width = container.clientWidth;
         const height = container.clientHeight;

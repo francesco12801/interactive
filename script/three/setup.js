@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loader.load('../font/montserrat.json', (font) => {
             const text = 'WELCOME EVERYONE';
             const letterMeshes = [];
-            const radius = 300; // Radius of the circle where letters will be positioned
+            const radius = 300; // Radius of the circle where letters will be positioned, must be grater than the sphere
 
             // Create a temporary text geometry to calculate total text width
             const tempGeometry = new TextGeometry(text, {
